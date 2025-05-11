@@ -1,0 +1,30 @@
+<% layout("/layouts/boilerplate") %>
+
+
+
+<body>
+   <h3 class="header border-bottom sticky">Find Affordable Rooms, PGs & Hostels for Students Across India</h3>
+    <!--<form action="/listings/new" method="get">
+        <button>Create New</button>
+    </form> -->
+
+    <section class="card-section">
+      <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 justify-content-center">
+        <% for(let listing of allListings){ %>
+          <div class="col d-flex justify-content-center">
+            <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
+              <div class="card">
+                <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image">
+                <div class="card-body">
+                  <p class="card-text mb-1">
+                    <b><%= listing.title %></b><br>
+                    ₹<%= Number(listing.price ?? 0).toLocaleString('en-IN') %>
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+        <% } %>
+      </div>
+    </section>
+    </body>

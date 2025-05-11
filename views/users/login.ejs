@@ -1,0 +1,75 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+  <div class="card shadow-lg p-4" style="width: 100%; max-width: 500px;">
+    <h2 class="mb-4 text-center text-danger">Login</h2>
+
+    <!-- ✅ Flash messages -->
+    <% if (success && success.length > 0) { %>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <%= success %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% } %>
+
+    <% if (error && error.length > 0) { %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <%= error %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% } %>
+
+    <!-- ✅ Login Form -->
+    <form action="/login" method="POST" class="needs-validation" novalidate>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          name="username"
+          placeholder="Enter your username"
+          required
+        />
+        <label for="username"><i class="bi bi-person-circle me-2"></i>Username</label>
+        <div class="invalid-feedback">Username is required.</div>
+      </div>
+
+      <div class="form-floating mb-4">
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          minlength="6"
+          required
+        />
+        <label for="password"><i class="bi bi-lock-fill me-2"></i>Password</label>
+        <div class="invalid-feedback">Password must be at least 6 characters long.</div>
+      </div>
+
+      <button type="submit" class="btn btn-danger w-100 py-2">Login</button>
+    </form>
+
+    <p class="text-center mt-3 mb-0">
+      Don't have an account? <a href="/signup" class="text-danger text-decoration-none">Sign up here</a>
+    </p>
+  </div>
+</div>
+
+<!-- ✅ Bootstrap form validation script -->
+<script>
+  (() => {
+    'use strict';
+    const forms = document.querySelectorAll('.needs-validation');
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  })();
+</script>

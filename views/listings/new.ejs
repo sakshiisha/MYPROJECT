@@ -1,0 +1,73 @@
+<% layout("/layouts/boilerplate") %>
+
+<body>
+  <div class="container my-4">
+    <h3 class="text-center mb-4">Create New Listing</h3>
+    <form action="/listings" method="post" class="needs-validation" novalidate enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input name="listing[title]" id="title" type="text" class="form-control" placeholder="Enter Title" required>
+        <div class="invalid-feedback">Please enter a title.</div>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea name="listing[description]" id="description" class="form-control" placeholder="Enter Description" required></textarea>
+        <div class="invalid-feedback">Please enter a description.</div>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+        <div class="mb-3">
+        <label for="image" class="form-label">Upload Image</label>
+        <input name="listing[image]" id="image" type="file" class="form-control">
+        <div class="invalid-feedback">Please provide a valid image URL.</div>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="price" class="form-label">Price</label>
+          <input name="listing[price]" id="price" type="number" class="form-control" placeholder="Enter Price" required>
+          <div class="invalid-feedback">Please enter a valid price.</div>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="city" class="form-label">City</label>
+          <input name="listing[city]" id="city" type="text" class="form-control" placeholder="Enter City" required>
+          <div class="invalid-feedback">Please enter a city.</div>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="address" class="form-label">address</label>
+        <input name="listing[address]" id="address" type="text" class="form-control" placeholder="Enter address" required>
+        <div class="invalid-feedback">Please enter a address.</div>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Add Listing</button>
+    </form>
+  </div>
+
+  <script>
+    // Bootstrap form validation script
+    (function () {
+      'use strict';
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.from(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+  </script>
+
+  <script src="/scripts/script.js"></script>
+</body>

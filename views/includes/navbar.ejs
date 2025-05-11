@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="/listings">
+      <i class="fa-brands fa-bluesky me-2"></i>StudentBnB
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+      <div class="navbar-nav">
+        <a class="nav-link text-white" href="/listings">Explore</a>
+      
+      </div>
+      <a class="nav-link text-white" href="/listings/new">Add New</a>
+      <div class="navbar-nav ms-auto">
+        <% if (!currentUser) { %>
+          <a class="nav-link text-white" href="/login">Login</a>
+          <a class="nav-link text-white" href="/signup">Sign Up</a>
+        <% } else { %>
+          <span class="nav-link text-white">Hello, <%= currentUser.username %>!</span>
+          <form action="/logout" method="POST" class="d-flex align-items-center ms-2">
+            <button class="btn btn-outline-light btn-sm" type="submit">Logout</button>
+          </form>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>
