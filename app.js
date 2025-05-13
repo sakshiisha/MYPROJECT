@@ -91,7 +91,7 @@ app.use((err, req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-res.send("server is working")
+ res.redirect("/listings");
 });
 
 
