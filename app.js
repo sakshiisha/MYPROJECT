@@ -90,6 +90,11 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error.ejs", { err });
 });
 
+app.get("/", (req, res) => {
+  res.send("Server is running");
+});
+
+
 // ✅ Server start
 app.listen(8080, () => {
   console.log("Server is working on port 8080");
